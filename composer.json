@@ -1,0 +1,19 @@
+{
+    "name": "kerwin/captcha",
+    "type": "captcha",
+    "require": {
+        "symfony/http-foundation": "5.3"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Kerwin\\Captcha\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jhuei0831",
+            "email": "jhuei0831@gmail.com"
+        }
+    ]
+}
