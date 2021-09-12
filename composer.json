@@ -2,7 +2,7 @@
     "name": "kerwin/captcha",
     "type": "captcha",
     "require": {
-        "symfony/http-foundation": "5.3"
+        "symfony/http-foundation": "*"
     },
     "license": "MIT",
     "autoload": {
