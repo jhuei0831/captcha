@@ -59,7 +59,7 @@
                 imagesetpixel($image, rand(0, $width), rand(0, $high), $black);
             }
 
-            $font = __DIR__ .'\fonts\captcha'.rand(0, 5).'.ttf';
+            $font = __DIR__ .'/fonts/captcha'.rand(0, 5).'.ttf';
 
             $strx = rand(5, 18);
             for ($i = 0; $i < $nums; $i++) {
