@@ -5,12 +5,21 @@
     use Symfony\Component\HttpFoundation\Session\Session;
 
     class Captcha
-    {
+    {        
+        /**
+         * \Symfony\Component\HttpFoundation\Session\Session
+         */
         protected $session;
+                
+        /**
+         * 驗證碼
+         *
+         * @var string
+         */
         protected $code = '';
 
-        public function __construct() {
-            $this->session = new Session();
+        public function __construct($bag = null) {
+            $this->session = $this->setSession($bag);
         }
                 
         /**
@@ -102,6 +111,26 @@
             }
 
             return $this->code;
+        }
+             
+        /**
+         * 設定session，可以自行定義sessionbag名稱等參數
+         *
+         * @param  string $bag
+         * @param  array  $options
+         * @param  mixed  $handler
+         * @return void
+         */
+        private function setSession(string $bag, $options = [], $handler = null)
+        {
+            if ($bag === null) {
+                return new Session();
+            }
+            $attribute = new \Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag($bag);
+            $flash = new \Symfony\Component\HttpFoundation\Session\Flash\FlashBag($bag);
+            $meta = new \Symfony\Component\HttpFoundation\Session\Storage\MetadataBag($bag);
+            $session = new \Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage($options, $handler, $meta);
+            return new Session($session, $attribute, $flash);
         }
     }
     
